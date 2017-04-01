@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE
+mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="/">
+	<select id="selectAllArticel" resultType="com.zx.Pojo.Articel">
+		select * from artical
+	</select>
+	<select id="selectArticelbyid" parameterType="java.lang.String" resultType="com.zx.Pojo.Articel">
+		select * from artical where id=#{articelId}
+	</select>
+	<select id="selectArticelBymodel" parameterType="java.lang.String" resultType="com.zx.Pojo.Articel">
+		select a.id,a.title,a.modelId,a.articelPicName,a.articelPicPath,a.date,a.likeNum,a.isOrder,COUNT(DISTINCT b.userId) as orderNum,(select count(id) from user) as allUsernum,a.outUrl,IFNULL(a.MaxMannum,0) as MaxMannum,a.articelDesc 
+		from artical a
+		left join userorder b on a.id=b.articelId
+		where a.modelId=#{model}
+		GROUP BY a.id,a.title,a.modelId,a.articelPicName,a.articelPicPath,a.date,a.likeNum,a.isOrder 
+	</select>
+	
+	<select id="selectOneLevelModel" resultType="com.zx.Pojo.Model">
+		select * from model where ModelLevel=1
+	</select>
+	
+	<select id="selectModel" parameterType="java.util.List" resultType="com.zx.Pojo.Model">
+		select * from model where 1=1 and id in
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+ 			#{item}  
+ 		</foreach> 
+ 		order by id
+	</select>
+	
+	<select id="selectOthLevelModel" resultType="com.zx.Pojo.Model" parameterType="java.lang.String">
+		select * from model where ParentMode=#{id}
+	</select>
+	
+	<select id="selectArticelContent" parameterType="java.lang.String" resultType="com.zx.Pojo.Articel">
+		select id,title,content,modelId,date,articelPicPath,likeNum,isOrder,outUrl,articelDesc,MaxMannum from artical where id=#{id}
+	</select>
+	
+	<select id="selectArticelFilepath" parameterType="java.lang.String" resultType="com.zx.Pojo.Articel">
+		select articelPicPath from artical where id=#{id}
+	</select>
+	<insert id="saveArticel" parameterType="com.zx.Pojo.Articel">
+		insert into artical(title,content,modelId,date,articelPicName,articelPicPath,isOrder,outUrl,articelDesc,MaxMannum) values(#{title},#{content},#{modelId},#{date},#{articelPicName},#{articelPicPath},#{isOrder},#{outUrl},#{articelDesc},#{MaxMannum})
+	</insert>
+	
+	<update id="updateArticel" parameterType="com.zx.Pojo.Articel">
+		update artical set title=#{title}, content=#{content}, modelId=#{modelId}, date=#{date}, 
+		<if test="articelPicPath != null and articelPicPath !=''">
+			articelPicName=#{articelPicName}, articelPicPath=#{articelPicPath},
+		</if>
+		<if test="MaxMannum != null and MaxMannum !=''">
+			MaxMannum=#{MaxMannum},
+		</if>
+		articelDesc=#{articelDesc},
+		outUrl=#{outUrl} where id=#{id}
+	</update>
+	
+	<select id="selectNumOfArticel" parameterType="com.zx.Pojo.Articel" resultType="java.lang.Integer">
+		select count(id) from artical where 1=1
+		<if test="title != null and title != ''">
+			and title like CONCAT('%',#{title},'%')  
+		</if>
+		<if test="modelId != null and modelId != ''">
+			and modelId = #{modelId}
+		</if>
+		<if test="modelids != null and modelids != ''">
+			and modelId in
+			<foreach item="item" index="index" collection="modelids" open="(" separator="," close=")">  
+ 				#{item}  
+ 			</foreach>  
+		</if>
+	</select>
+	<select id="selectArticelByCond" parameterType="com.zx.Pojo.Pageinfo" resultType="java.util.Map">
+		select a.id,a.title,a.articelPicName,a.articelPicPath,a.likeNum,a.isOrder,b.ModelName,DATE_FORMAT(a.date,"%Y-%m-%d") as date,(select COUNT(distinct c.userId) from userorder c where c.articelId=a.id) as orderNum,IFNULL(a.MaxMannum,0) as MaxMannum 
+		from artical a
+		left join model b on a.modelId=b.id
+		where 1=1
+		<if test="condarticel.title != null and condarticel.title != ''">
+			and a.title like CONCAT('%',#{condarticel.title},'%')
+		</if>
+		<if test="condarticel.modelId != null and condarticel.modelId != ''">
+			and a.modelId = #{condarticel.modelId}
+		</if>
+		<if test="condarticel.modelids != null and condarticel.modelids != ''">
+			and a.modelId in
+			<foreach item="item" index="index" collection="condarticel.modelids" open="(" separator="," close=")">  
+ 				#{item}  
+ 			</foreach>  
+		</if>
+		order by a.date DESC
+		limit #{begin},#{shownum}
+	</select>
+	
+	<delete id="deleteartByid" parameterType="java.lang.String">
+		delete from artical where id=#{id}
+	</delete>
+	
+	<update id="updatePointLike" parameterType="java.lang.Integer">
+		update artical set likeNum=likeNum+1 where id=#{id}
+	</update>
+	<update id="updatedisPointLike" parameterType="java.lang.Integer">
+		update artical set likeNum=likeNum-1 where id=#{id}
+	</update>
+	
+	<insert id="insertArticelLike" parameterType="com.zx.Pojo.ArticelLike">
+		insert into articallike(articelid,likeUser,likeDate) values(#{articelId},#{likeUser},#{likeDate})
+	</insert>
+	
+	<delete id="deleteArticelLike" parameterType="com.zx.Pojo.ArticelLike">
+		delete from articallike where articelId=#{articelId} and likeUser=#{likeUser}
+	</delete>
+	
+	<select id="modelisOrder" parameterType="java.lang.String" resultType="com.zx.Pojo.Model">
+		select isOrder from model where id=#{id}
+	</select>
+	
+	<select id="selectArticelLike" parameterType="com.zx.Pojo.ArticelLike" resultType="java.lang.Integer">
+		select count(id) from articallike where articelId=#{articelId} and likeUser=#{likeUser}
+	</select>
+	
+	<select id="selectArticelLikeByuserid" parameterType="java.lang.String" resultType="com.zx.Pojo.ArticelLike">
+		select * from articallike where likeUser=#{userid}
+	</select>
+	
+	<!-- 判断是否还有子模块 -->
+	<select id="isChildNode" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select count(id) from model where ParentMode=#{modelid}
+	</select>
+	<select id="getChildModel" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select id from model where ParentMode=#{modelid}
+	</select>
+</mapper>

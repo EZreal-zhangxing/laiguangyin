@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>文章内容</title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/articontent.css"/>
+		
+	</head>
+	<body>
+		<div class="mask">
+			
+			
+		</div>
+		
+		<div class="input">
+			<img src="../img/close.png" class="close"/>
+			<input type="hidden" name="" id="articelid" value="" placeholder=""/>
+			<input type="hidden" name="" id="modelid" value="" placeholder=""/>
+			<input type="text" name="" id="name" value="" placeholder="姓名："/>
+		    <input type="text" id="userTel" value="" placeholder="联系方式："/>
+		    <input type="text" id="userAddress" value="" placeholder="所属社区："/>
+            <input type="text" id="comAddress" value="" placeholder="工作单位："/>
+            <input type="submit" value="提交" class="sub1" />
+			
+		</div>
+		<div class="input1">
+			<img src="../img/close.png" class="close"/>
+			<p id="msg"></p>
+			<input type="hidden" name="" id="articelid" value="" placeholder=""/>
+			<input type="hidden" name="" id="modelid" value="" placeholder=""/>
+			<input type="text" name="" id="name" value="" placeholder="姓名："/>
+		    <input type="text" id="userTel" value="" placeholder="联系方式："/>
+		    <input type="text" id="userAddress" value="" placeholder="所属社区："/>
+            <input type="text" id="comAddress" value="" placeholder="工作单位："/>
+            
+			<p>预约时间：<i class="time"></i></p>
+			<div>
+				<span data-time="10" value="1">09:00-10:00</span>
+				<span data-time="11" value="2">10:01-11:00</span>
+				<span data-time="14" value="3">13:30-14:00</span>
+				<span data-time="15" value="4">14:01-15:00</span>
+				<span data-time="16" value="5">15:01-16:00</span>
+				<span data-time="17" value="6">16:01-17:00</span>
+			</div>
+			<input type="submit" id="" name="" value="提交" class="sub2"/>
+		</div>
+		
+		
+		<div class="wrap">
+		
+		
+		<input type="button" value="点击预约" class="order btn1"/>
+		<input type="button" value="点击预约" class="order btn2"/>
+		
+		</div>
+		
+	</body>
+	<script src="../js/libs/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/app/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/app/yuyue1.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    	$(".btn1").on('click',function(){
+    		$(".mask").css("display","block");
+    	})
+    	$(".btn2").on('click',function(){
+    		$(".input1,.mask").css("display","block");
+    	})
+    	$(".sub2").on('click',function(){
+    		$(".input1,.mask").css("display","none");
+    	})
+    	$(".input1 .active").on('click',function(){
+    		
+    		$(this).addClass('active1').siblings('.active').removeClass('active1')
+    		var txt = $(this).html();
+    		console.log(txt);
+    		$(".time").text(txt)
+    	})
+    	$(".close").on('click',function(){
+    		$(".input1,.mask").css("display","none");
+    	})
+   
+    </script>
+</html>

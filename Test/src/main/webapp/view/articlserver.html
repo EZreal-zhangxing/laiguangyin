@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>文章内容</title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/articontent.css"/>
+		
+	</head>
+	<body>
+		<div class="mask"></div>
+		<div class="input">
+			<img src="../img/close.png" class="close"/>
+			<input type="hidden" name="" id="articelid" value="" placeholder=""/>
+			<input type="hidden" name="" id="modelid" value="" placeholder=""/>
+			<input type="text" name="" id="name" value="" placeholder="姓名："/>
+		    <input type="text" id="userTel" value="" placeholder="联系方式："/>
+		    <input type="text" id="userAddress" value="" placeholder="所属社区："/>
+            <input type="text" id="comAddress" value="" placeholder="工作单位："/>
+            <input type="submit" value="提交" class="sub1" />
+		</div>
+		<div class="wrap">
+			<input type="button" value="预约" class="order btn1"/>
+		</div>
+	</body>
+	<script src="../js/libs/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/app/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/app/yuyue1.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    	$(".btn1").on('click',function(){
+    		$(".input,.mask").css("display","block");
+    	})
+    	
+    	$(".sub1").on('click',function(){
+    		$(".input,.mask").css("display","none");
+    	})
+    	$(".close").on('click',function(){
+    		$(".input,.mask").css("display","none");
+    	})
+    </script>
+</html>

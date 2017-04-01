@@ -1,0 +1,126 @@
+body,html{
+    height: 100%;
+}
+.wrap{
+    width: 660/72rem;
+    height: 100%;
+    margin: 10/72rem 30/72rem 0 30/72rem;
+    background: #eee;
+}
+
+.mask{
+    display: none;
+    position: fixed;
+    background: rgba(51,51,51,0.8);
+    width: 720/72rem;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 999;
+}
+.input{
+    display: none;
+    width: 440/72rem;
+    height: 325/72rem;
+    background: #fff;
+   // border: 2/72rem solid deeppink;
+    border-radius:10/72rem;
+    position: absolute;
+    z-index: 1000;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    padding: 45/72rem 40/72rem 0 40/72rem;
+    //text-align: center;
+}
+.input h1{
+    font-size:30/72rem;
+    font-family: "微软雅黑";
+    color: #333;
+    text-align: center;
+}
+.input p{
+    margin-top: 70/72rem;
+    color: #666;
+    font-size:24/72rem;
+}
+.input .sub1{
+    width: 190/72rem;
+    height: 48/72rem;
+    text-align: center;
+    line-height: 48/72rem;
+    border:1/72rem solid #999;
+    border-radius:10/72rem;
+    background: #fff;
+    font-size:28/72rem;
+    margin-top: 60/72rem;
+    color: #333;
+}
+.input .sub2{
+    width: 190/72rem;
+    height: 48/72rem;
+    text-align: center;
+    line-height: 48/72rem;
+    border:1/72rem solid #999;
+    border-radius:10/72rem;
+    background: #ff6600;
+    font-size:28/72rem;
+    margin-top: 60/72rem;
+    color: #fff;
+    margin-left: 50/72rem;
+}
+//蒙板结束
+
+
+
+.wrap input{
+    width:660/72rem ;
+    height: 80/72rem;
+    background: #ff6600;
+    color: #000;
+    letter-spacing:20/72rem;
+    text-align: center;
+    line-height: 80/72rem;
+    font-size:35/72rem;
+    border:0;
+    border-radius:10/72rem 10/72rem 0 0 ;
+    font-family: "微软雅黑";
+}
+.wrap table{
+    border-left: none;
+    border-top: none;
+    //border-bottom: hidden;
+    //border-right: none;
+    margin: 10/72rem;
+    text-align: center;
+   
+}
+.wrap table tr{
+    height: 80/72rem;
+}
+.wrap table tr:nth-child(1) td{
+    width: 155/72rem;
+    color: #ff6600;
+    font-size:28/72rem;
+}
+.wrap table tr td:first-child{
+    font-size:28/72rem;
+}
+.wrap table tr td:last-child{
+    font-size:28/72rem;
+    border-right:hidden;
+    //border-right:2/72rem solid red;
+}
+.wrap .detail {
+   width: 340/72rem;
+}
+table .detail span{
+    display: inline-block;
+    width: 330/72rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
+.cancel{
+    color:blue;
+}

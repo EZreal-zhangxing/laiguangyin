@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>预约</title>
+		<link rel="stylesheet" type="text/css" href="../css/orderlist.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		
+	</head>
+	<body>
+		<!--蒙板开始-->
+		<div class="mask">
+			
+			
+		</div>
+		
+		<div class="input">
+			<h1>确认取消</h1>
+			<p>您确认取消后，我们将在后台取消您的预约项目。</p>
+            <input type="submit" value="否" class="sub1" />
+            <input type="submit" value="是" class="sub2" />
+			
+		</div>
+		<!--蒙板结束-->
+		
+		<div class="wrap">
+			
+			<input type="submit" value="预约"/>
+			<table border="1">
+				<tr>
+					<td>预约项目</td>
+					<td class="detail">项目详情</td>
+					<td>操作</td>
+				</tr>
+			</table>
+			
+		</div>
+	</body>
+	
+    <script src="../js/libs/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/app/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/app/orderlist.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    	$(".sub1,.sub2").click(function(){
+    		$(".mask,.input").css("display","none")
+    	})
+    </script>
+</html>

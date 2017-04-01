@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>朝来乡里</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/indexclxl.css"/>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+	</head>
+	<body>
+	   <div class="wrap">
+	   	 
+	   	  <a href="view/server.html">
+	   	  	<img src="img/seavice.png"/>
+	   	  	<span>便民服务</span>
+	   	  </a>
+	   	  <a href="view/guide.html">
+	   	  	<img src="img/guide.png"/>
+	   	  	<span>办事指南</span>
+	   	  </a>
+	   	  <a href="view/search.html">
+	   	  	<img src="img/search.png"/>
+	   	    <span>信息查询</span> 
+	   	  </a>
+	   	  <a id="aboutUs" href="view/own.html">
+	   	  	<img src="img/own.png"/>
+	   	    <span>关于我们</span>
+	   	  </a>
+	   	  <img src="img/bg-logo.png" class="logoimg"/>
+	   </div>
+       
+	</body>
+
+	<script src="js/libs/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/app/common.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var userid=getCookie("userid");
+ 		$.ajax({
+		type:"get",
+		url:"/getArticelsBymodel/4/"+userid,
+		async:true,
+		dataType:"json",
+		success:function(data){
+			console.log(data)
+			$(data).each(function(index,element){
+				Data = element;
+		    })
+			$("#aboutUs").attr("href",Data.outUrl);
+		  }
+		}); 
+	</script>
+</html>

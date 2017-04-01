@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE
+mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="/">
+
+	<select id="hasorder" parameterType="com.zx.Pojo.userOrder" resultType="java.lang.Integer">
+		select count(id) from userorder where statue=1 and orderDate=#{orderDate} and articelId=#{articelId} and userId=#{userId} and timeArea=#{timeArea}
+	</select>
+	<insert id="saveUserOrder" parameterType="com.zx.Pojo.userOrder">
+		insert into userorder(name,userTel,userAddress,comAddress,articelId,userId,timeArea,orderDate)
+		values(#{name},#{userTel},#{userAddress},#{comAddress},#{articelId},#{userId},#{timeArea},#{orderDate})
+	</insert>
+	
+	<select id="isuserorder" parameterType="com.zx.Pojo.userOrder" resultType="java.lang.Integer">
+		select count(id) from userorder where statue=1 and orderDate=#{orderDate} and articelId=#{articelId} and timeArea=#{timeArea}
+	</select>
+	
+	<select id="selectUserorderByid" parameterType="java.lang.String" resultType="java.util.Map">
+		select a.id,a.statue,d.ModelName,b.title,c.timeArea from userorder a
+			left join artical b on a.articelId=b.id
+			left join model d on b.modelId=d.id
+			left join timearea c on a.timeArea=c.id
+			where 1=1 and a.userId=#{userid}
+	</select>
+	
+	<update id="cancleOrder" parameterType="java.lang.String">
+		update userorder set statue=0 where id=#{id}
+	</update>
+	
+	<select id="selectUserorderByartid" parameterType="com.zx.Pojo.Pageinfo" resultType="java.util.Map">
+		select a.articelId,u.UserName,c.title,a.name,a.userTel,a.userAddress,a.comAddress,b.timeArea,a.statue,a.orderDate from userorder a
+		left join user u on a.userId=u.id
+		left join artical c on a.articelId=c.id
+		left join timearea b on a.timeArea=b.id
+		where 1=1 and a.articelId=#{condarticel.id}
+		limit #{begin},#{end}
+	</select>
+	
+	<select id="selectNumUserorderByartid" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(a.id) from userorder a where a.articelId=#{articelId}
+	</select>
+	
+	<delete id="deleteUserorder" parameterType="java.lang.String">
+		delete from userorder where articelId=#{id}
+	</delete>
+	
+	<update id="updateUserorder" parameterType="java.util.Map">
+		update userorder set statue=2 where orderDate=#{orderDate} and timeArea=#{timeArea}
+	</update>
+	
+	<update id="updateUserordereveryday" parameterType="java.lang.String">
+		update userorder set statue=2 where orderDate=#{date} and statue=1
+	</update>
+	
+	<select id="getNumofOrder" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select count(DISTINCT userId) from userorder where articelId=#{articelId} and statue=1
+	</select>
+</mapper>

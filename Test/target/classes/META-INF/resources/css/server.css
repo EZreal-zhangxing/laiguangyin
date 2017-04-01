@@ -1,0 +1,29 @@
+.wrap ul li {
+  height: 2.08333333rem;
+  margin-bottom: 0.02777778rem;
+}
+.wrap ul li a > img {
+  width: 2.77777778rem;
+  display: inline-block;
+  border: 0;
+  margin-right: -0.11111111rem;
+  float: left;
+}
+.wrap ul li p {
+  height: 2.08333333rem;
+  line-height: 2.08333333rem;
+  width: 7.22222222rem;
+  background: url(../img/bg-1.png) no-repeat;
+  background-size: 7.22222222rem;
+  font-size: 0.5rem;
+  letter-spacing: 0.02777778rem;
+  color: #fff;
+  vertical-align: top;
+  font-family: "幼圆";
+  float: right;
+}
+.wrap ul li p img {
+  width: 0.97222222rem;
+  vertical-align: middle;
+  margin-left: 1.73611111rem;
+}

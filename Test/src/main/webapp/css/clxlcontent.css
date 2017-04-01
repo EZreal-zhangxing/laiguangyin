@@ -1,0 +1,32 @@
+body,
+html {
+  height: 100%;
+}
+.wrap {
+  width: 10rem;
+}
+.wrap h1 {
+  color: #323333;
+  font-size: 0.5rem;
+  font-family: "微软雅黑";
+  letter-spacing: 0.06944444rem;
+  margin: 0.69444444rem 0 0.41666667rem 0.27777778rem;
+}
+.wrap time {
+  color: #999;
+  font-size: 0.33333333rem;
+  margin-left: 0.48611111rem;
+}
+.wrap p {
+  color: #323333;
+  padding: 0.27777778rem 0.625rem 0.27777778rem 0.625rem;
+  text-indent: 0.69444444rem;
+  font-size: 0.33333333rem;
+  letter-spacing: 0.01388889rem;
+}
+.wrap img {
+  display: block;
+  width: 8.33333333rem;
+  height: 6.25rem;
+  margin: 0.27777778rem auto;
+}

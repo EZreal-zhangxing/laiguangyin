@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>来约</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/indexappoint.css"/>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
+	</head>
+	<body>
+		
+	   
+	   	  <!--轮播图开始-->
+	   	  <div class="banner swiper-container">
+		   	  <ul class="list swiper-wrapper">
+		   	 	<li class="swiper-slide"><a href="#"><img src="" alt="" /></a></li>
+		   	 	<li class="swiper-slide"><a href="#"><img src="" alt="" /></a></li>
+		   	 	<li class="swiper-slide"><a href="#"><img src="" alt="" /></a></li>
+		   	 	<li class="swiper-slide"><a href="#"><img src="" alt="" /></a></li>
+		   	 	<li class="swiper-slide"><a href="#"><img src="" alt="" /></a></li>
+		   	 </ul>
+		   	 <div class="swiper-pagination"></div>
+	   	  </div>
+	   	  <!--轮播图结束-->
+	   	  
+	   	  <div class="wrap">
+			<ul>
+				<li>
+					<a href="view/appointactive.html?id=27">
+						<div id="">
+						   <img src="img/active.png"/>
+					   </div>
+					    <p>约<span></span>活动</p>
+					</a>	
+				</li>
+				<li>
+					<a href="view/appointserver.html?id=28">
+						<div id="">
+							<img src="img/serve.png"/>
+						</div>
+					<p>约<span></span>服务</p>
+					</a>
+				</li>
+				<li>
+					<a href="view/appointplace.html?id=29">
+						<div id="">
+							<img src="img/place.png"/>
+						</div>
+					<p>约<span></span>场地</p>
+					</a>
+				</li>
+				<li>
+					<a href="view/appointcenter.html">
+						<div id="">
+							<img src="img/centre.png"/>
+						</div>
+					<p>个人中心</p>
+					</a>
+				</li>
+			</ul>
+		</div>		
+				
+	   	  
+	   
+       
+	</body>
+	
+	
+	<script src="js/libs/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/app/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/app/indexappoint.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/libs/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+   // 轮播图
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        speed:500,
+        loop:true,
+        observer:true,
+        observeParents:true,
+        autoplayDisableOnInteraction : false,
+        autoplay:1000
+    });
+    function checkuser(){
+    	var username=getCookie("username");
+    	var password=getCookie("password");
+    	alert(username+","+password);
+    	if((username != '' && username != null) && (password != '' && password !=null))
+    	{
+    		window.location.href="view/orderlist.html";
+    	}else
+    	{
+    		window.location.href="view/appointcenter.html";
+    	}
+    }
+    </script>
+</html>

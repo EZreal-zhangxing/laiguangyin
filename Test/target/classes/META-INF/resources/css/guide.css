@@ -1,0 +1,68 @@
+body,
+html {
+  height: 100%;
+}
+.wrap {
+  width: 10rem;
+  height: 100%;
+}
+.wrap ul li {
+  height: 2.08333333rem;
+  margin-bottom: 0.02777778rem;
+}
+.wrap ul li a {
+  display: inline-block;
+  height: 2.08333333rem;
+  width: 10rem;
+}
+.wrap ul li a > img {
+  width: 2.77777778rem;
+  display: inline-block;
+  border: 0;
+  margin-right: -0.11111111rem;
+  float: left;
+}
+.wrap ul li p {
+  height: 2.08333333rem;
+  line-height: 2.08333333rem;
+  width: 7.22222222rem;
+  float: right;
+  vertical-align: top;
+  font-size: 0.5rem;
+  letter-spacing: 0.02777778rem;
+  color: #fff;
+  font-family: "幼圆";
+}
+.wrap ul li p img {
+  width: 0.97222222rem;
+  vertical-align: middle;
+  margin-left: 1.73611111rem;
+}
+.p1 {
+  background: url(../img/bg-1.png) no-repeat;
+  background-size: 7.22222222rem;
+}
+.p2 {
+  background: url(../img/bg-2.png) no-repeat;
+  background-size: 7.22222222rem;
+}
+.p3 {
+  background: url(../img/bg-3.png) no-repeat;
+  background-size: 7.22222222rem;
+}
+.p4 {
+  background: url(../img/bg-4.png) no-repeat;
+  background-size: 7.22222222rem;
+}
+.p5 {
+  background: url(../img/bg-5.png) no-repeat;
+  background-size: 7.22222222rem;
+}
+.p6 {
+  background: url(../img/bg-6.png) no-repeat;
+  background-size: 7.22222222rem;
+}
+.p7 {
+  background: url(../img/bg-7.png) no-repeat;
+  background-size: 7.22222222rem;
+}
